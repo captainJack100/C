@@ -3,6 +3,7 @@
  *	Little endian ---> 67 45 23 01  Last byte stored first
  *	Big Endian ---> 01 23 45 67		first byte stored first
  *	char has access to individual bytes
+ *	Network order is big endian. ASCII files are independent (they have 1 byte units). JPEG are big endian.
  */
 
 #include <stdio.h>
