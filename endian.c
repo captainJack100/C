@@ -2,6 +2,7 @@
  *	Determine endianess of machine
  *	Little endian ---> 67 45 23 01  Last byte stored first
  *	Big Endian ---> 01 23 45 67		first byte stored first
+ *	char has access to individual bytes
  */
 
 #include <stdio.h>
@@ -32,7 +33,6 @@ int main(void) {
 	int i = 0x01234567;
 	memRep((char *)&i, sizeof(i));
 	checkEndianess();
-		
 
 	return 0;
 }
