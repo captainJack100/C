@@ -67,7 +67,7 @@ int main(void) {
 	char *w = "hello";
 	char *t = (char *)calloc(1, sizeof(6));
 	
-	printf("%d \n", strlen1(s));
+	printf("%d \n", strlen1(s));		// length 6
 	printf("%s \n", strcpy1(t, s));
 	printf("%d \n", strcmp1(s, w));
 	printf("%s \n", findsub(x, s));
