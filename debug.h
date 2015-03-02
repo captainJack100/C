@@ -1,7 +1,7 @@
 /* debug.h DEBUG HEADER FILE 
  *
  * Usage: 
- * 		#define DEBUG will use macros. Remove to stop
+ * 		#define DEBUG will use macros. 
  * 		printing to stederr.
  */
 #ifndef __debug_h__
