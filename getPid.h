@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const char* get_process_name_by_pid(const int pid)
+const char* getPid(const int pid)
 {
     char* name = (char*)calloc(1024,sizeof(char));
     if(name){
