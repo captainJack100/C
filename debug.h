@@ -29,3 +29,22 @@
 #define checkMem(A, ...) if (!(A)) { basePrint("No Memory", ##__VA_ARGS__); }
 
 #endif
+
+const char* getPid(const int pid)
+{
+    char* name = (char*)calloc(1024,sizeof(char));
+    if(name){
+        sprintf(name, "/proc/%d/cmdline",pid);
+        FILE* f = fopen(name,"r");
+        if(f){
+            size_t size;
+            size = fread(name, sizeof(char), 1024, f);
+            if(size>0){
+                if('\n'==name[size-1])
+                    name[size-1]='\0';
+            }
+            fclose(f);
+        }
+    }
+    return name;
+}
