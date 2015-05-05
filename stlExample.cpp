@@ -6,6 +6,17 @@
 
 using namespace std;
 
+#define tr(container, it) for(auto it = container.begin(); it != container.end(); it++)
+						  
+// needed because it automically finds the right iterator for all stl types.
+template<typename T> void printOut2(T& m)
+{
+	tr(m, it)
+	{
+		cout << *it << endl;
+	}
+}
+
 // using templates to print
 template<typename T> void printOut(T &a, int size)
 {
@@ -56,5 +67,8 @@ int main(void)
 	reverse(a, a+10);
 	printOut(a, 10);
 
+	cout << "macro" << endl;
+	printOut2(m);
+	
 	return 0;
 }
