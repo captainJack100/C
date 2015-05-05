@@ -16,9 +16,9 @@ template<typename T> void printOut(T &a, int size)
 }
 
 // using iterators
-void printVector(vector<int>& m)
+void printVector(const vector<int>& m)
 {
-	for(vector<int>::iterator it = m.begin(); it != m.end(); it++)
+	for(vector<int>::const_iterator it = m.begin(); it != m.end(); it++)
 	{
 		cout << *it << endl;
 	}
