@@ -3,11 +3,14 @@
 #include <algorithm>
 #include <vector>
 #include <unordered_map>
+#include <typeinfo>
 
 using namespace std;
 
+// tr2 for non-c++11 version of auto
 #define tr(container, it) for(auto it = container.begin(); it != container.end(); it++)
-						  
+#define tr2(c, it) for(typeof(c.begin()) it = c.begin(); it != c.end(); it++)
+
 // needed because it automically finds the right iterator for all stl types.
 template<typename T> void printOut2(T& m)
 {
