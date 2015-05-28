@@ -4,6 +4,7 @@
 #include <vector>
 #include <unordered_map>
 #include <typeinfo>
+#include <queue>
 
 using namespace std;
 
@@ -40,6 +41,20 @@ void printVector(const vector<int>& m)
 
 int main(void) 
 {
+	// initialize a pair
+	pair<int, string> elts[] = {make_pair(2, "two"), make_pair(1,"one"), make_pair(3, "three")};
+	priority_queue< pair<int, string> > pq;
+	// pair is ordered by first elt than second.
+	for(int i = 0; i < 3; i++)
+	{
+		pq.push(elts[i]);
+	}	
+	while(!pq.empty())
+	{
+		cout << pq.top().second << endl;
+		pq.pop();
+	}
+
 	int a[10] = {1,2,3,4,5,6,7,8,9,10};
 	vector<int> m(a, a+10);
 	unordered_map<string, int> n;
