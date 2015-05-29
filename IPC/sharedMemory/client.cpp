@@ -1,6 +1,6 @@
 /* 
  *  compile: g++ -c -Wall client.cpp; g++ -L /lib client.o -lrt
- *
+ *  look in /dev/shm
  *
  *
  */

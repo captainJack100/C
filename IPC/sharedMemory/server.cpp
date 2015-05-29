@@ -2,6 +2,7 @@
  * Compiling 
  * 
  * g++ -c -Wall server.cpp; g++ -L /lib server.o -lrt
+ * look in /dev/shm
  */
 
 #include <boost/array.hpp>
