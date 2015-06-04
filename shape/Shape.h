@@ -9,7 +9,7 @@ class Shape
 	public:
 		string getName(void);
 		double getArea(void);
-		Shape(double a=0, double b=0, double c=0, string n="");
+		Shape(double a=0, double b=0, double c=0, string n="default");
 	private:
 		string name;
 		double length;
