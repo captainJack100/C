@@ -1,0 +1,46 @@
+MAKEFLAGS=-S
+
+SOURCES			:=	$(wildcard *.cpp)
+HEADERS			:=	$(wildcard *.h)
+OBJECTS			=	$(SOURCES:.cpp=.o)
+TARGET			=	$(shell basename $(CURDIR))
+
+SERVERNAME 	= 	SERVER
+SERVER		=	server.cpp
+SERVEROBJ		=	$(SERVER:.cpp=.o)
+
+CLIENTNAME	=   CLIENT
+CLIENT		=	client.cpp 
+CLIENTOBJ		=	$(CLIENT:.cpp=.o)
+
+RM				=	/bin/rm
+RMFLAGS			=	-fR
+
+CC		=	g++
+
+INCDIRS	=	-I /usr/local/include \
+            -I /usr/include 
+
+LIBDIRS	=	-L /usr/local/lib		\
+            -L /usr/local/lib       \
+            -L /usr/lib   
+
+LIBS	=	-lrt -lm -lc -lssl
+
+CFLAGS	=	-DDEBUG	-w -Wunused -Wformat
+
+%.o : %.cpp
+	$(CC) $(CFLAGS) $(INCDIRS) -c -o $@ $<
+
+.PHONY : clean 
+
+all: $(CLIENTNAME) $(SERVERNAME)
+
+$(SERVERNAME): $(HEADERS) $(SERVER) $(SERVEROBJ)
+		$(CC) $(LIBDIRS) $(SERVEROBJ) -o $(SERVERNAME) $(LIBS)
+
+$(CLIENTNAME): $(HEADERS) $(CLIENT) $(CLIENTOBJ)
+		$(CC) $(LIBDIRS) $(CLIENTOBJ) -o $(CLIENTNAME) $(LIBS)
+
+clean:
+	$(RM) $(RMFLAGS) $(OBJECTS) $(CLIENTNAME)
