@@ -14,6 +14,12 @@ void mapFun(T& original, T& modified, FUNC fun)
 	transform(original.begin(), original.end(), back_inserter(modified), fun);
 }
 
+template <typename T>
+typename T::value_type reduce(T& m)
+{
+	return accumulate(m.begin(), m.end(), 0);
+}
+
 int main(void)
 {
 
@@ -31,6 +37,8 @@ int main(void)
 	{
 		cout << *it << endl;
 	}
+
+	cout << reduce(m) << endl;
 
 	return 0;
 }
