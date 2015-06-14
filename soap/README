@@ -1,0 +1,8 @@
+## Simple soap example
+## need to run server as cgi
+## includes client and server
+
+run ...
+
+./makeSoap.sh
+make
