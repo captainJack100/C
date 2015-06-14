@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="googleapi"
+ targetNamespace="urn:GoogleSearch"
+ xmlns:tns="urn:GoogleSearch"
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:api="urn:GoogleSearch"
+ xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+ xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+ xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+ xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+ <schema targetNamespace="urn:GoogleSearch"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:api="urn:GoogleSearch"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <simpleType name="Enum-1"><!-- _Enum_1 -->
+
+   <restriction base="xsd:string">
+    <enumeration value="false"/><!-- _Enum_1::false_ -->
+    <!-- = 0 -->
+    <enumeration value="true"/><!-- _Enum_1::true_ -->
+    <!-- = 1 -->
+   </restriction>
+  </simpleType>
+  <complexType name="DirectoryCategory"><!-- api__DirectoryCategory -->
+
+   <sequence>
+     <element name="fullViewableName" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__DirectoryCategory::fullViewableName -->
+     <element name="specialEncoding" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__DirectoryCategory::specialEncoding -->
+   </sequence>
+  </complexType>
+  <complexType name="ArrayOfDirectoryCategory">
+   <complexContent>
+    <restriction base="SOAP-ENC:Array">
+     <sequence>
+      <element name="item" type="api:DirectoryCategory" minOccurs="0" maxOccurs="unbounded" nillable="false"/>
+     </sequence>
+     <attribute ref="SOAP-ENC:arrayType" WSDL:arrayType="api:DirectoryCategory[]"/>
+    </restriction>
+   </complexContent>
+  </complexType>
+  <complexType name="ResultElement"><!-- api__ResultElement -->
+
+   <sequence>
+     <element name="summary" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__ResultElement::summary -->
+     <element name="URL" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__ResultElement::URL -->
+     <element name="snippet" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__ResultElement::snippet -->
+     <element name="title" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__ResultElement::title -->
+     <element name="cachedSize" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__ResultElement::cachedSize -->
+     <element name="relatedInformationPresent" type="xsd:boolean" minOccurs="1" maxOccurs="1"/><!-- api__ResultElement::relatedInformationPresent -->
+     <element name="hostName" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__ResultElement::hostName -->
+     <element name="directoryCategory" type="api:DirectoryCategory" minOccurs="1" maxOccurs="1"/><!-- api__ResultElement::directoryCategory -->
+     <element name="directoryTitle" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__ResultElement::directoryTitle -->
+   </sequence>
+  </complexType>
+  <complexType name="ArrayOfResultElement">
+   <complexContent>
+    <restriction base="SOAP-ENC:Array">
+     <sequence>
+      <element name="item" type="api:ResultElement" minOccurs="0" maxOccurs="unbounded" nillable="false"/>
+     </sequence>
+     <attribute ref="SOAP-ENC:arrayType" WSDL:arrayType="api:ResultElement[]"/>
+    </restriction>
+   </complexContent>
+  </complexType>
+  <complexType name="GoogleSearchResult"><!-- api__GoogleSearchResult -->
+
+   <sequence>
+     <element name="documentFiltering" type="xsd:boolean" minOccurs="1" maxOccurs="1"/><!-- api__GoogleSearchResult::documentFiltering -->
+     <element name="searchComments" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__GoogleSearchResult::searchComments -->
+     <element name="estimatedTotalResultsCount" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- api__GoogleSearchResult::estimatedTotalResultsCount -->
+     <element name="estimateIsExact" type="xsd:boolean" minOccurs="1" maxOccurs="1"/><!-- api__GoogleSearchResult::estimateIsExact -->
+     <element name="resultElements" type="api:ArrayOfResultElement" minOccurs="1" maxOccurs="1" nillable="true"/><!-- api__GoogleSearchResult::resultElements -->
+     <element name="searchQuery" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__GoogleSearchResult::searchQuery -->
+     <element name="startIndex" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- api__GoogleSearchResult::startIndex -->
+     <element name="endIndex" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- api__GoogleSearchResult::endIndex -->
+     <element name="searchTips" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__GoogleSearchResult::searchTips -->
+     <element name="directoryCategories" type="api:ArrayOfDirectoryCategory" minOccurs="1" maxOccurs="1" nillable="true"/><!-- api__GoogleSearchResult::directoryCategories -->
+     <element name="searchTime" type="xsd:double" minOccurs="1" maxOccurs="1"/><!-- api__GoogleSearchResult::searchTime -->
+   </sequence>
+  </complexType>
+  <!-- operation request element -->
+  <element name="doGoogleSearch">
+   <complexType>
+    <sequence>
+     <element name="key" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__doGoogleSearch::key -->
+     <element name="q" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__doGoogleSearch::q -->
+     <element name="start" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- api__doGoogleSearch::start -->
+     <element name="maxResults" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- api__doGoogleSearch::maxResults -->
+     <element name="filter" type="xsd:boolean" minOccurs="1" maxOccurs="1"/><!-- api__doGoogleSearch::filter -->
+     <element name="restrict" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__doGoogleSearch::restrict_ -->
+     <element name="safeSearch" type="xsd:boolean" minOccurs="1" maxOccurs="1"/><!-- api__doGoogleSearch::safeSearch -->
+     <element name="lr" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__doGoogleSearch::lr -->
+     <element name="ie" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__doGoogleSearch::ie -->
+     <element name="oe" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__doGoogleSearch::oe -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="doGoogleSearchResponse">
+   <complexType>
+    <sequence>
+     <element name="return" type="api:GoogleSearchResult" minOccurs="1" maxOccurs="1"/><!-- api__doGoogleSearchResponse::_return -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="doGetCachedPage">
+   <complexType>
+    <sequence>
+     <element name="key" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__doGetCachedPage::key -->
+     <element name="url" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__doGetCachedPage::url -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="doGetCachedPageResponse">
+   <complexType>
+    <sequence>
+     <element name="return" type="xsd:base64Binary" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__doGetCachedPage::_return -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="doSpellingSuggestion">
+   <complexType>
+    <sequence>
+     <element name="key" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__doSpellingSuggestion::key -->
+     <element name="phrase" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__doSpellingSuggestion::phrase -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="doSpellingSuggestionResponse">
+   <complexType>
+    <sequence>
+     <element name="return" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- api__doSpellingSuggestion::_return -->
+    </sequence>
+   </complexType>
+  </element>
+ </schema>
+
+</types>
+
+<message name="doGoogleSearch">
+ <part name="Body" element="api:doGoogleSearch"/><!-- api__doGoogleSearch::api__doGoogleSearch -->
+</message>
+
+<message name="doGoogleSearchResponse">
+ <part name="Body" element="api:doGoogleSearchResponse"/><!-- api__doGoogleSearch::response -->
+</message>
+
+<message name="doGetCachedPageRequest">
+ <part name="Body" element="api:doGetCachedPage"/><!-- api__doGetCachedPage::api__doGetCachedPage -->
+</message>
+
+<message name="doGetCachedPageResponse">
+ <part name="Body" element="api:doGetCachedPageResponse"/>
+</message>
+
+<message name="doSpellingSuggestionRequest">
+ <part name="Body" element="api:doSpellingSuggestion"/><!-- api__doSpellingSuggestion::api__doSpellingSuggestion -->
+</message>
+
+<message name="doSpellingSuggestionResponse">
+ <part name="Body" element="api:doSpellingSuggestionResponse"/>
+</message>
+
+<portType name="googleapiPortType">
+ <operation name="doGoogleSearch">
+  <documentation>Service definition of function api__doGoogleSearch</documentation>
+  <input message="tns:doGoogleSearch"/>
+  <output message="tns:doGoogleSearchResponse"/>
+ </operation>
+ <operation name="doGetCachedPage">
+  <documentation>Service definition of function api__doGetCachedPage</documentation>
+  <input message="tns:doGetCachedPageRequest"/>
+  <output message="tns:doGetCachedPageResponse"/>
+ </operation>
+ <operation name="doSpellingSuggestion">
+  <documentation>Service definition of function api__doSpellingSuggestion</documentation>
+  <input message="tns:doSpellingSuggestionRequest"/>
+  <output message="tns:doSpellingSuggestionResponse"/>
+ </operation>
+</portType>
+
+<binding name="googleapi" type="tns:googleapiPortType">
+ <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+ <operation name="doGoogleSearch">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="Body" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="Body" use="literal"/>
+  </output>
+ </operation>
+ <operation name="doGetCachedPage">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="Body" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="Body" use="literal"/>
+  </output>
+ </operation>
+ <operation name="doSpellingSuggestion">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="Body" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="Body" use="literal"/>
+  </output>
+ </operation>
+</binding>
+
+<service name="googleapi">
+ <documentation>gSOAP 2.8.16 generated service definition</documentation>
+ <port name="googleapi" binding="tns:googleapi">
+  <SOAP:address location="http://api.google.com/search/beta2"/>
+ </port>
+</service>
+
+</definitions>

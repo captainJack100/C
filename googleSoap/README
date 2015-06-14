@@ -1,0 +1,9 @@
+You need:
+
+	1. Google api key
+	2. googleapi.c
+	3. googleapi.h
+
+Run ...
+./makeSoap.sh
+make 
