@@ -6,3 +6,10 @@ run ...
 
 ./makeSoap.sh
 make
+
+How to Build from scratch ...
+
+	1. Need calc.wsdl file.
+	2. write client.cpp and server.cpp
+	3. ./makeSoap.sh
+	4. make
